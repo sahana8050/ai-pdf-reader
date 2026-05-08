@@ -30,7 +30,7 @@ const AuthModal = ({ isOpen, initialIsLogin = true, onClose, onSuccess }) => {
         ? { email: formData.email, password: formData.password }
         : { name: formData.name, email: formData.email, password: formData.password };
         
-      const response = await axios.post(`http://localhost:5000${endpoint}`, payload);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${endpoint}`, payload);
       
       onSuccess(response.data);
     } catch (err) {
