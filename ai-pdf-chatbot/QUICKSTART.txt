@@ -1,0 +1,94 @@
+# QUICK START - 5 Minutes to Running App
+
+## Step 1: Get OpenAI API Key (2 min)
+1. Go to: https://platform.openai.com/api-keys
+2. Click "Create new secret key"
+3. Copy the key
+
+## Step 2: Configure Backend (1 min)
+```bash
+cd ai-pdf-chatbot/backend
+```
+
+Edit `.env` file and update:
+```
+OPENAI_API_KEY=sk-proj-your-actual-key-here
+MONGODB_URI=mongodb://127.0.0.1:27017/pdf-assistant
+```
+
+## Step 3: Install Dependencies (1 min)
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend (new window/tab)
+cd ../frontend
+npm install
+```
+
+## Step 4: Start Backend (30 sec)
+```bash
+cd backend
+npm run dev
+```
+Wait for:
+```
+Connected to MongoDB
+Server running on port 5000
+```
+
+## Step 5: Start Frontend (30 sec)
+```bash
+# New terminal
+cd frontend
+npm run dev
+```
+Opens automatically to: http://localhost:5173
+
+## Done! 🎉
+- Upload a PDF
+- Ask questions
+- Get AI answers with sources
+
+---
+
+## Need MongoDB?
+
+### Local Installation
+- Windows: https://www.mongodb.com/try/download/community
+- Install and run the Community Server
+- Verify: `mongosh` (should connect)
+
+### Cloud (Free)
+- https://www.mongodb.com/cloud/atlas
+- Create free cluster
+- Copy connection string to `.env` MONGODB_URI
+
+---
+
+## Troubleshooting
+
+❌ MongoDB connection error?
+- Make sure MongoDB is running
+- Check MONGODB_URI in .env
+
+❌ OpenAI API error?
+- Verify API key is correct (starts with sk-proj-)
+- Check at https://platform.openai.com/account/api-keys
+
+❌ Port already in use?
+```bash
+netstat -ano | findstr :5000
+taskkill /PID <PID> /F
+```
+
+---
+
+## Full Documentation
+- README.md - Complete overview
+- SETUP.md - Detailed setup
+- API.md - API reference
+- IMPLEMENTATION_SUMMARY.md - What was built
+
+**Happy documenting! 🚀**
