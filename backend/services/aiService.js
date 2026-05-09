@@ -62,12 +62,12 @@ async function fetchAvailableGeminiModels(apiKey) {
  */
 async function getBestGeminiModel(apiKey) {
   const preferredModels = [
-    'gemini-1.5-flash', 
-    'gemini-1.5-flash-latest', 
-    'gemini-1.5-pro', 
+    'gemini-1.5-flash',
+    'gemini-1.5-flash-latest',
+    'gemini-1.5-pro',
     'gemini-pro'
   ];
-  
+
   if (!cachedGeminiModels) {
     cachedGeminiModels = await fetchAvailableGeminiModels(apiKey);
   }
@@ -120,15 +120,15 @@ export async function getChatCompletion({ systemPrompt, userPrompt, messages = [
 
       console.log(`[AI Service] OpenAI Request Success`);
       return response.choices[0]?.message?.content || '';
-    } 
-    
+    }
+
     if (activeProvider === 'gemini') {
       const client = dynamicKey ? new GoogleGenerativeAI(activeKey) : gemini;
-      
+
       // Dynamically select the best model
       const modelName = await getBestGeminiModel(activeKey);
-      
-      const model = client.getGenerativeModel({ 
+
+      const model = client.getGenerativeModel({
         model: modelName,
         systemInstruction: systemPrompt
       });
@@ -148,7 +148,7 @@ export async function getChatCompletion({ systemPrompt, userPrompt, messages = [
   } catch (error) {
     const providerName = activeProvider ? activeProvider.toUpperCase() : 'AI';
     console.error(`[AI Service] ${providerName} Error:`, error.message);
-    
+
     // Log full error for debugging
     if (activeProvider === 'gemini') {
       console.error(`[Gemini Debug] Full Error:`, error);
@@ -166,7 +166,7 @@ export async function getChatCompletion({ systemPrompt, userPrompt, messages = [
     if (error.message.includes('quota') || error.message.includes('limit')) {
       throw new Error('AI Rate Limit: You have exceeded your API quota. Please try again later.');
     }
-    
+
     throw new Error(`AI generation failed: ${error.message}`);
   }
 }
