@@ -28,8 +28,11 @@ OPENAI_API_KEY=sk-proj-your-actual-key-here
 OPENAI_MODEL=gpt-4o-mini
 OPENAI_EMBEDDING_MODEL=text-embedding-3-large
 
-# Server Port
+# Server Port (Local)
 PORT=5000
+
+# Production URL (Optional for backend itself, but good to know)
+# https://ai-pdf-reader-4.onrender.com
 ```
 
 **How to get your OpenAI API Key:**
@@ -57,7 +60,7 @@ cd ../frontend
 npm install
 ```
 
-No environment variables needed for frontend (uses localhost:5000 by default).
+API configuration is centralized in `frontend/src/apiConfig.js`. It defaults to the production URL (`https://ai-pdf-reader-4.onrender.com`) but can be overridden by the `VITE_API_URL` environment variable.
 
 ### 4. **Starting the Application**
 

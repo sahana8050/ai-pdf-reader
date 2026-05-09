@@ -49,7 +49,7 @@ cd backend
 npm install
 # Edit .env with your OpenAI API key
 npm run dev
-# Runs on http://localhost:5000
+# Runs on https://ai-pdf-reader-4.onrender.com (Production)
 
 # 3. Frontend setup (new terminal)
 cd frontend
@@ -444,7 +444,7 @@ npm install
 cd backend
 npm run dev
 ```
-Backend will run on http://localhost:5000
+Backend will run on https://ai-pdf-reader-4.onrender.com (Production)
 
 ### Start Frontend
 ```bash
@@ -474,12 +474,7 @@ Upload a PDF file and extract text.
 3. Use the deployed URL in frontend
 
 ### Connecting Frontend to Deployed Backend
-Update the API URL in `Sidebar.jsx` from `http://localhost:5000` to your deployed backend URL.
-
-For production, use environment variables:
-- Create `.env` in frontend root
-- Add `VITE_API_URL=https://your-backend-url.com`
-- Update code to use `import.meta.env.VITE_API_URL`
+- Use `import.meta.env.VITE_API_URL` (configured in `apiConfig.js`)
 
 ## Future Enhancements
 

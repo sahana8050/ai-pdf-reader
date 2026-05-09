@@ -7,9 +7,10 @@ import Navbar from './components/Navbar.jsx';
 import AuthModal from './components/AuthModal.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import DashboardHome from './components/DashboardHome.jsx';
+import API_BASE_URL from './apiConfig';
 
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api`
+  baseURL: `${API_BASE_URL}/api`
 });
 
 function AppContent() {

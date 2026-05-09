@@ -2,7 +2,7 @@
 
 ## Base URL
 ```
-http://localhost:5000/api
+https://ai-pdf-reader-4.onrender.com/api
 ```
 
 ## Authentication
@@ -263,7 +263,7 @@ const response = await axios.get('/api/history', {
 ```javascript
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:5000/api' });
+const api = axios.create({ baseURL: 'https://ai-pdf-reader-4.onrender.com/api' });
 
 // 1. Upload PDFs
 const uploadRes = await api.post('/upload', formData);

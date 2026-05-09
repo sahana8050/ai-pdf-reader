@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { X, Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
+import API_BASE_URL from '../apiConfig';
 
 const AuthModal = ({ isOpen, initialIsLogin = true, onClose, onSuccess }) => {
   const [isLogin, setIsLogin] = useState(initialIsLogin);
@@ -30,7 +31,7 @@ const AuthModal = ({ isOpen, initialIsLogin = true, onClose, onSuccess }) => {
         ? { email: formData.email, password: formData.password }
         : { name: formData.name, email: formData.email, password: formData.password };
         
-      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${endpoint}`, payload);
+      const response = await axios.post(`${API_BASE_URL}${endpoint}`, payload);
       
       onSuccess(response.data);
     } catch (err) {
