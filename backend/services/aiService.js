@@ -61,14 +61,19 @@ async function fetchAvailableGeminiModels(apiKey) {
  * Selects the best supported Gemini model
  */
 async function getBestGeminiModel(apiKey) {
-  const preferredModels = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
+  const preferredModels = [
+    'gemini-1.5-flash', 
+    'gemini-1.5-flash-latest', 
+    'gemini-1.5-pro', 
+    'gemini-pro'
+  ];
   
   if (!cachedGeminiModels) {
     cachedGeminiModels = await fetchAvailableGeminiModels(apiKey);
   }
 
   // If we fetched models, find the first preferred one that exists
-  if (cachedGeminiModels.length > 0) {
+  if (cachedGeminiModels && cachedGeminiModels.length > 0) {
     for (const pref of preferredModels) {
       if (cachedGeminiModels.includes(pref)) {
         console.log(`[AI Service] Selected Supported Model: ${pref}`);
@@ -81,7 +86,7 @@ async function getBestGeminiModel(apiKey) {
   }
 
   // Final hardcoded fallback if listing failed
-  console.log('[AI Service] Listing failed, using hardcoded fallback: gemini-1.5-flash');
+  console.log('[AI Service] Listing failed or empty, using hardcoded fallback: gemini-1.5-flash');
   return 'gemini-1.5-flash';
 }
 
